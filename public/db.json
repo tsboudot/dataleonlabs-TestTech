@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "photo": "../img/batman.jpg",
+        "answers": [
+            [
+                "Batman",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 2,
+        "photo": "../img/KurtCobain.jpeg",
+        "answers": [
+            [
+                "Kurt Cobain",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    }
+]
