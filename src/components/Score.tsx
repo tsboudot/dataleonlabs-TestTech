@@ -1,11 +1,8 @@
 import React from 'react';
 import ScoreBox from './ScoreBox';
+import { ScoreProps } from '../interfaces';
 
-interface ScoreProps {
-    scores: (boolean | null)[];
-}
-
-const Score: React.FC<ScoreProps> = ({ scores }) => {
+const Score = ({ scores }: ScoreProps) => {
     return (
         <div className="flex flex-wrap justify-center">
             {scores.map((isCorrect, index) => (

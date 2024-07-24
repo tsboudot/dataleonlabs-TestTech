@@ -1,12 +1,7 @@
 import React from 'react';
-import { Question as QuestionType } from './../interfaces';
+import { QuestionProps } from '../interfaces';
 
-interface QuestionProps {
-    question: QuestionType;
-    onAnswer: (isCorrect: boolean) => void;
-}
-
-const Question: React.FC<QuestionProps> = ({ question, onAnswer }) => {
+const Question = ({ question, onAnswer }: QuestionProps) => {
     return (
         <div className="flex flex-col items-center justify-center h-full">
             <img src={question.photo} alt="Question" className="mb-6" />

@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import Question from './Question';
+import React, { useState, useEffect } from 'react';
 import Score from './Score';
-import { Question as QuestionType } from '../interfaces';
+import Question from './Question';
+import { GameState, QuestionType } from '../interfaces';
 
-const Main: React.FC = () => {
-    const [inGame, setInGame] = useState(false);
-    const [index, setIndex] = useState(0);
-    const [questions, setQuestions] = useState<QuestionType[]>([]);
-    const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-    const [scores, setScores] = useState<(boolean | null)[]>(Array(10).fill(null));
+const Main = () => {
+    const [gameState, setGameState] = useState<GameState>({
+        inGame: false,
+        index: 0,
+        questions: [],
+        isCorrect: null,
+        scores: Array(10).fill(null),
+    });
 
     useEffect(() => {
-        // Charger les questions depuis le fichier db.json
         fetch('/db.json')
             .then((response) => response.json())
-            .then((data: QuestionType[]) => setQuestions(data))
+            .then((data: QuestionType[]) => setGameState(prevState => ({
+                ...prevState,
+                questions: data
+            })))
             .catch((error) => console.error('Error loading questions:', error));
     }, []);
+
+    const { inGame, index, questions, isCorrect, scores } = gameState;
 
     if (!inGame) {
         return (
             <div className="relative h-3/4">
                 <button
                     className="bg-blue-500 text-white px-4 py-2 rounded-md absolute inset-x-10 bottom-0 hover:bg-red-600 left-1/2 transform -translate-x-1/2 mb-4"
-                    onClick={() => setInGame(true)}
+                    onClick={() => setGameState(prevState => ({
+                        ...prevState,
+                        inGame: true
+                    }))}
                 >
                     Get Started
                 </button>
@@ -32,28 +41,34 @@ const Main: React.FC = () => {
     }
 
     if (questions.length === 0) {
-        return <div>Loading...</div>; // Afficher un message de chargement
+        return <div>Loading...</div>;
     }
 
     const currentQuestion = questions[index];
 
     const handleAnswerClick = (isCorrectAnswer: boolean) => {
-        setIsCorrect(isCorrectAnswer);
-
-        setScores(prevScores => {
-            const newScores = [...prevScores];
+        setGameState(prevState => {
+            const newScores = [...prevState.scores];
             newScores[index] = isCorrectAnswer;
-            return newScores;
+
+            return {
+                ...prevState,
+                isCorrect: isCorrectAnswer,
+                scores: newScores
+            };
         });
 
         setTimeout(() => {
-            if (index < questions.length - 1) {
-                setIndex(index + 1);
-            } else {
-                setInGame(false); // Réinitialiser le jeu après la dernière question
-            }
-            setIsCorrect(null);
-        }, 1000); // Attendre 1 seconde avant de passer à la question suivante ou de réinitialiser
+            setGameState(prevState => {
+                const nextIndex = prevState.index < questions.length - 1 ? prevState.index + 1 : 0;
+                return {
+                    ...prevState,
+                    index: nextIndex,
+                    inGame: nextIndex === 0 ? false : prevState.inGame,
+                    isCorrect: null
+                };
+            });
+        }, 1000);
     };
 
     return (

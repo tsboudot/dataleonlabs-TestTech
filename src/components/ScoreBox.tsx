@@ -1,11 +1,8 @@
 import React from 'react';
+import { ScoreBoxProps } from '../interfaces';
 
-interface ScoreBoxProps {
-    isCorrect: boolean | null; // null before the question is answered
-}
-
-const ScoreBox: React.FC<ScoreBoxProps> = ({ isCorrect }) => {
-    let bgColor = 'bg-gray-300'; // Default color
+const ScoreBox = ({ isCorrect }: ScoreBoxProps) => {
+    let bgColor = 'bg-gray-300';
 
     if (isCorrect === true) {
         bgColor = 'bg-green-500';
