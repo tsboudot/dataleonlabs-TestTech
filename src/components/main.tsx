@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Score from './Score';
 import Question from './Question';
 import { GameState, QuestionType } from '../interfaces';
+import { handleAnswerClick } from '../utils';
 
 const Main = () => {
     const [gameState, setGameState] = useState<GameState>({
@@ -46,35 +47,14 @@ const Main = () => {
 
     const currentQuestion = questions[index];
 
-    const handleAnswerClick = (isCorrectAnswer: boolean) => {
-        setGameState(prevState => {
-            const newScores = [...prevState.scores];
-            newScores[index] = isCorrectAnswer;
-
-            return {
-                ...prevState,
-                isCorrect: isCorrectAnswer,
-                scores: newScores
-            };
-        });
-
-        setTimeout(() => {
-            setGameState(prevState => {
-                const nextIndex = prevState.index < questions.length - 1 ? prevState.index + 1 : 0;
-                return {
-                    ...prevState,
-                    index: nextIndex,
-                    inGame: nextIndex === 0 ? false : prevState.inGame,
-                    isCorrect: null
-                };
-            });
-        }, 1000);
+    const handleClick = (isCorrectAnswer: boolean) => {
+        handleAnswerClick(gameState, setGameState, isCorrectAnswer);
     };
 
     return (
         <div className="flex flex-col items-center justify-center h-full">
             <Score scores={scores} />
-            <Question question={currentQuestion} onAnswer={handleAnswerClick} />
+            <Question question={currentQuestion} onAnswer={handleClick} />
             {isCorrect !== null && (
                 <p className="text-xl mt-4">
                     {isCorrect ? 'Correct!' : 'Incorrect!'}
