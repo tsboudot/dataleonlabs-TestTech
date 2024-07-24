@@ -4,7 +4,11 @@ import { QuestionProps } from '../interfaces';
 const Question = ({ question, onAnswer }: QuestionProps) => {
     return (
         <div className="flex flex-col items-center justify-center h-full">
-            <img src={question.photo} alt="Question" className="mb-6" />
+            <img
+                src={question.photo}
+                alt="Question"
+                className="w-48 h-48 object-cover mb-6 mt-5" // Modifiez w-48 et h-48 selon vos besoins
+            />
             <p className="text-xl mb-6">Who is this?</p>
             <div className="flex space-x-4">
                 {question.answers.map((answer, idx) => (

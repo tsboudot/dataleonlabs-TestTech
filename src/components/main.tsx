@@ -27,9 +27,9 @@ const Main = () => {
 
     if (!inGame) {
         return (
-            <div className="relative h-3/4">
+            <div className="relative h-3/4 mt-20">
                 <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md absolute inset-x-10 bottom-0 hover:bg-red-600 left-1/2 transform -translate-x-1/2 mb-4"
+                    className="bg-blue-500 text-white px-4 py-2 mt-20 rounded-md inset-x-10 bottom-0 hover:bg-red-600 left-1/2 transform -translate-x-1/2 mb-4"
                     onClick={() => setGameState(prevState => ({
                         ...prevState,
                         inGame: true

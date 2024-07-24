@@ -26,5 +26,117 @@
                 false
             ]
         ]
+    },
+    {
+        "id": 3,
+        "photo": "../img/MerylStreep.jpg",
+        "answers": [
+            [
+                "Meryl Streep",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 4,
+        "photo": "../img/ReneCotti.jpg",
+        "answers": [
+            [
+                "René Cotti",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 5,
+        "photo": "../img/Zidane.jpg",
+        "answers": [
+            [
+                "Zinédine Zidane",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 6,
+        "photo": "../img/DenzelWashington.jpg",
+        "answers": [
+            [
+                "Denzel Washington",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 7,
+        "photo": "../img/BritneySpears.jpg",
+        "answers": [
+            [
+                "Britney Spears",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 8,
+        "photo": "../img/JoanBaez.jpeg",
+        "answers": [
+            [
+                "Joan Baez",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 9,
+        "photo": "../img/IndianaJones.jpg",
+        "answers": [
+            [
+                "Indiana Jones",
+                true
+            ],
+            [
+                "Michel Drucker",
+                false
+            ]
+        ]
+    },
+    {
+        "id": 10,
+        "photo": "../img/MichelDrucker.jpg",
+        "answers": [
+            [
+                "Michel Polnareff",
+                false
+            ],
+            [
+                "Michelle Obama",
+                false
+            ]
+        ]
     }
 ]
