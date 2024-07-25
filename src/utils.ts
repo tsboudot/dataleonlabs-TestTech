@@ -1,4 +1,3 @@
-// utils.ts
 import { GameState } from './interfaces';
 
 export const handleAnswerClick = (

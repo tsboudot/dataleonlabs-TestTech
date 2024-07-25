@@ -1,4 +1,3 @@
-// interfaces.tsx
 export interface Answer {
     0: string;
     1: boolean;

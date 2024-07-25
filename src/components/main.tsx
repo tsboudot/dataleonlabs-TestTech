@@ -57,7 +57,7 @@ const Main = () => {
             <Question question={currentQuestion} onAnswer={handleClick} />
             {isCorrect !== null && (
                 <p className="text-xl mt-4">
-                    {isCorrect ? 'Correct!' : 'Incorrect!'}
+                    {isCorrect ? 'Good Choice!' : 'Damn!'}
                 </p>
             )}
         </div>
