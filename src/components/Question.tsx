@@ -7,7 +7,7 @@ const Question = ({ question, onAnswer }: QuestionProps) => {
             <img
                 src={question.photo}
                 alt="Question"
-                className="w-48 h-48 object-cover mb-6 mt-5"
+                className="w-48 h-48 object-contain mb-6 mt-5"
             />
             <p className="text-xl mb-6">Who is this?</p>
             <div className="flex space-x-4">
